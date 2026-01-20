@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARGIN - 日程收集箱</title>
+    <meta name="description" content="MARGIN 是一个日程收集箱。截图、转发、粘贴，随手一扔就能进日历。不再「又忘了」。">
+    <meta name="keywords" content="MARGIN, 日程收集箱, 日历, iOS App, AI识别, 截图识别">
+    <link rel="alternate" hreflang="en" href="index-en.html">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #faf9f7;
+            --text: #1a1a1a;
+            --text-light: #666;
+            --text-muted: #999;
+            --border: #e8e6e0;
+            --accent: #d97706;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        .lang-switch {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            font-size: 14px;
+            z-index: 100;
+        }
+
+        .lang-switch a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .lang-switch a:hover {
+            color: var(--text);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 120px 24px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        section.short {
+            min-height: auto;
+            padding: 80px 24px;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 32px;
+        }
+
+        .hero .tagline {
+            font-size: 24px;
+            color: var(--text-light);
+            line-height: 2;
+            margin-bottom: 64px;
+        }
+
+        /* Flow Demo */
+        .flow-demo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 48px;
+        }
+
+        .flow-step {
+            background: #fffef9;
+            border: 1px solid var(--border);
+            padding: 24px 32px;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .flow-step .icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .flow-step .label {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .flow-arrow {
+            font-size: 24px;
+            color: var(--text-muted);
+        }
+
+        .flow-time {
+            margin-top: 32px;
+            font-size: 18px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* Insight Sections */
+        .insight {
+            border-top: 1px solid var(--border);
+        }
+
+        .insight .label {
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .insight h2 {
+            font-size: 36px;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
+
+        .insight p {
+            font-size: 18px;
+            color: var(--text-light);
+            line-height: 2;
+            max-width: 560px;
+        }
+
+        .insight .highlight {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* Pain Point */
+        .pain-quote {
+            background: #fff5f5;
+            border-left: 3px solid #e53e3e;
+            padding: 32px 40px;
+            margin: 40px 0;
+            font-size: 20px;
+            font-style: italic;
+            color: #c53030;
+        }
+
+        /* Contrast Section */
+        .contrast {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            margin-top: 48px;
+        }
+
+        .contrast-col h3 {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+        }
+
+        .contrast-col ul {
+            list-style: none;
+            font-size: 16px;
+            color: var(--text-light);
+        }
+
+        .contrast-col ul li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .contrast-col.wrong ul li {
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+
+        /* Pricing */
+        .pricing {
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .pricing .tier {
+            margin-bottom: 48px;
+        }
+
+        .pricing .tier-name {
+            font-size: 14px;
+            color: var(--text-muted);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .pricing .price {
+            font-size: 56px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .pricing .price-note {
+            font-size: 16px;
+            color: var(--text-light);
+        }
+
+        .pricing .price-divider {
+            width: 48px;
+            height: 1px;
+            background: var(--border);
+            margin: 48px auto;
+        }
+
+        .pricing .price-insight {
+            font-size: 16px;
+            color: var(--text-muted);
+            max-width: 400px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+
+        /* Trust */
+        .trust-section {
+            text-align: center;
+        }
+
+        .trust-section h2 {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 48px;
+        }
+
+        .trust-list {
+            font-size: 18px;
+            color: var(--text-light);
+            line-height: 2.4;
+        }
+
+        .trust-list strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--text);
+            color: var(--bg);
+            padding: 20px 48px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: opacity 0.3s;
+            border-radius: 12px;
+        }
+
+        .cta:hover {
+            opacity: 0.85;
+        }
+
+        .cta svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .cta-note {
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 64px 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        footer nav {
+            margin-bottom: 24px;
+        }
+
+        footer a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 16px;
+            font-size: 14px;
+        }
+
+        footer a:hover {
+            color: var(--text);
+        }
+
+        footer .copyright {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            section { padding: 80px 20px; }
+            .hero h1 { font-size: 48px; }
+            .hero .tagline { font-size: 20px; }
+            .insight h2 { font-size: 28px; }
+            .flow-demo { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); }
+            .contrast { grid-template-columns: 1fr; gap: 40px; }
+            .pricing .price { font-size: 42px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switch">
+        <a href="index-en.html">EN</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>MARGIN</h1>
+        <p class="tagline">
+            日程收集箱<br>
+            随手一扔，就进日历
+        </p>
+        <div class="flow-demo">
+            <div class="flow-step">
+                <div class="icon">📸</div>
+                <div class="label">截图</div>
+            </div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">
+                <div class="icon">🤖</div>
+                <div class="label">识别</div>
+            </div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">
+                <div class="icon">✓</div>
+                <div class="label">确认</div>
+            </div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">
+                <div class="icon">📅</div>
+                <div class="label">进日历</div>
+            </div>
+        </div>
+        <p class="flow-time">整个过程 &lt; 10 秒</p>
+    </section>
+
+    <!-- Pain Point -->
+    <section class="insight">
+        <p class="label">问题</p>
+        <h2>你骂自己的瞬间</h2>
+        <div class="pain-quote">
+            "操，婚礼是明天，我忘了！"<br>
+            "孩子的家长会我又没去！"<br>
+            "这个会议我明明看到通知了，怎么没录进去！"
+        </div>
+        <p>
+            问题不是「录入麻烦」。<br>
+            问题是「<span class="highlight">当时没录，后来忘了</span>」。
+        </p>
+    </section>
+
+    <!-- Solution -->
+    <section class="insight">
+        <p class="label">解法</p>
+        <h2>让「当时没录」<br>这件事不再发生</h2>
+        <p>
+            收到课表、婚礼邀请、会议截图？<br>
+            不用停下来整理。<br>
+            <span class="highlight">截图、转发、粘贴</span>，扔进 MARGIN。<br>
+            它帮你识别、你确认一下、就进系统日历。
+        </p>
+    </section>
+
+    <!-- Trust -->
+    <section class="insight">
+        <p class="label">承诺</p>
+        <h2>永远不替你做决定</h2>
+        <p>
+            日历是「强后果系统」。<br>
+            一次自动误判 = 信任清零。<br><br>
+            所以 MARGIN <span class="highlight">永远不自动写入日历</span>。<br>
+            每一条日程，都需要你确认。
+        </p>
+    </section>
+
+    <!-- What it's NOT -->
+    <section class="insight">
+        <p class="label">边界</p>
+        <h2>省心，不是兴奋</h2>
+        <div class="contrast">
+            <div class="contrast-col wrong">
+                <h3>MARGIN 不是</h3>
+                <ul>
+                    <li>日历应用</li>
+                    <li>Todo 工具</li>
+                    <li>AI 聊天助手</li>
+                    <li>提醒轰炸机</li>
+                </ul>
+            </div>
+            <div class="contrast-col">
+                <h3>MARGIN 是</h3>
+                <ul>
+                    <li>日程收集箱</li>
+                    <li>截图识别器</li>
+                    <li>日历入口</li>
+                    <li>省心工具</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Briefing -->
+    <section class="insight">
+        <p class="label">每日简报</p>
+        <h2>每天早上，<br>像有个秘书替你看一眼</h2>
+        <p>
+            今天是什么样的一天？<br>
+            三件不可错过的事是什么？<br>
+            唯一的空档在哪里？<br><br>
+            <span class="highlight">这才是你愿意持续付费的原因</span>——<br>
+            不是功能多，是每天都在工作。
+        </p>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <div class="tier">
+            <p class="tier-name">Standard</p>
+            <div class="price">$7.99</div>
+            <p class="price-note">每年</p>
+        </div>
+        <div class="tier">
+            <p class="tier-name">Pro</p>
+            <div class="price">$17.99</div>
+            <p class="price-note">每年 · 语音简报 + 周月分析</p>
+        </div>
+        <div class="price-divider"></div>
+        <p class="price-insight">
+            这是每天在工作的服务，不是玩具。<br>
+            认真收钱，认真交付。
+        </p>
+    </section>
+
+    <!-- Privacy -->
+    <section class="trust-section short">
+        <h2>关于隐私</h2>
+        <p class="trust-list">
+            <strong>数据留在你的设备</strong><br>
+            不追踪、不卖数据<br>
+            图片识别后立即删除<br>
+            日历数据本地处理
+        </p>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section short">
+        <!-- TODO: Replace with real App Store link after approval -->
+        <a href="https://apps.apple.com/app/margin/id000000000" class="cta">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            App Store 下载
+        </a>
+        <p class="cta-note">需要 iOS 17.0 或更高版本</p>
+    </section>
+
+    <footer>
+        <nav>
+            <a href="support.html">支持</a>
+            <a href="privacy.html">隐私政策</a>
+            <a href="terms.html">服务条款</a>
+        </nav>
+        <p class="copyright">© 2026 Uncle J</p>
+    </footer>
+</body>
+</html>

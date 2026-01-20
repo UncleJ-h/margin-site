@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - MARGIN</title>
+    <meta name="description" content="MARGIN App Support and Help.">
+    <link rel="alternate" hreflang="zh-CN" href="support.html">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #faf9f7;
+            --text: #1a1a1a;
+            --text-light: #666;
+            --text-muted: #999;
+            --border: #e8e6e0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: var(--bg);
+            min-height: 100vh;
+        }
+
+        .lang-switch {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            font-size: 14px;
+            z-index: 100;
+        }
+
+        .lang-switch a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .lang-switch a:hover {
+            color: var(--text);
+        }
+
+        main {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 80px 24px 64px;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+        }
+
+        .breadcrumb a {
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--text);
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 64px;
+        }
+
+        /* Contact Card */
+        .contact-card {
+            background: #fffef9;
+            border: 1px solid var(--border);
+            padding: 48px;
+            margin-bottom: 64px;
+            text-align: center;
+        }
+
+        .contact-card h2 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .contact-card p {
+            font-size: 15px;
+            color: var(--text-light);
+            margin-bottom: 32px;
+        }
+
+        .contact-card a.email {
+            display: inline-block;
+            background: var(--text);
+            color: var(--bg);
+            padding: 16px 40px;
+            text-decoration: none;
+            font-size: 15px;
+            border-radius: 8px;
+            transition: opacity 0.3s;
+        }
+
+        .contact-card a.email:hover {
+            opacity: 0.8;
+        }
+
+        /* FAQ */
+        .section-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+
+        .faq-item {
+            padding: 32px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-item:first-of-type {
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-item h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .faq-item p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.9;
+        }
+
+        .faq-item a {
+            color: var(--text-light);
+        }
+
+        /* App Info */
+        .app-info {
+            margin-top: 64px;
+            padding: 40px;
+            background: #f5f4f0;
+        }
+
+        .app-info h3 {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+        }
+
+        .app-info p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 64px 24px;
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
+        }
+
+        footer nav {
+            margin-bottom: 24px;
+        }
+
+        footer a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 16px;
+            font-size: 14px;
+        }
+
+        footer a:hover {
+            color: var(--text);
+        }
+
+        footer .copyright {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switch">
+        <a href="support.html">中文</a>
+    </div>
+
+    <main>
+        <p class="breadcrumb"><a href="index-en.html">← MARGIN</a></p>
+
+        <h1>Support</h1>
+
+        <div class="contact-card">
+            <h2>Need Help?</h2>
+            <p>We typically respond within 24 hours</p>
+            <a href="mailto:support@margin.app" class="email">Send Email</a>
+        </div>
+
+        <p class="section-title">FAQ</p>
+
+        <div class="faq-item">
+            <h3>How do I use MARGIN?</h3>
+            <p>When you see event information in any app, tap the Share button and select MARGIN. The app will automatically recognize event details from your screenshot or text. After you confirm, it's added to your calendar. The whole process takes less than 10 seconds.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What if AI recognition is inaccurate?</h3>
+            <p>Recognition results are shown on the confirmation screen where you can manually edit the title, date, and time. Only after you confirm will it be added to your calendar. The app never auto-adds events—you're always in control.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What languages are supported?</h3>
+            <p>MARGIN supports event recognition in both Chinese and English. The AI understands various date and time formats, including "next Wednesday at 3 PM", "Jan 15, 2:30 PM", and more.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How many free trials do I get?</h3>
+            <p>New users can try AI recognition 3 times for free. After trial uses are exhausted, a subscription is required to continue.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What's the difference between Standard and Pro?</h3>
+            <p><strong>Standard</strong> ($7.99/year): Includes core screenshot recognition and daily briefing.<br><strong>Pro</strong> ($17.99/year): Adds voice briefing (TTS) and weekly/monthly analysis reports.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I restore my subscription?</h3>
+            <p>Open MARGIN → Settings → tap "Restore Purchase". The system will verify your Apple ID and restore your subscription. Make sure you're using the same Apple ID you used for the purchase.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I cancel my subscription?</h3>
+            <p>Open iPhone Settings → tap your Apple ID at the top → Subscriptions → find MARGIN → Cancel Subscription. After canceling, you can still use the app until your current subscription period ends.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Will the app auto-add events?</h3>
+            <p>Never. This is MARGIN's core promise: every event requires your explicit confirmation before being added to your calendar. We never auto-write because calendars are "high-stakes systems"—one mistake destroys trust.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is my data safe?</h3>
+            <p>Yes. Screenshots you share are only used for AI recognition and deleted immediately after processing—they're not stored on our servers. Recognition results are saved only on your device locally. See our <a href="privacy-en.html">Privacy Policy</a> for details.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What devices are supported?</h3>
+            <p>MARGIN supports iPhone running iOS 17.0 or later. iPad and Mac are not currently supported.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I request a refund?</h3>
+            <p>Refunds for App Store purchases are handled by Apple. Please visit <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a> to submit your refund request.</p>
+        </div>
+
+        <div class="app-info">
+            <h3>About MARGIN</h3>
+            <p>Version: 1.0.0</p>
+            <p>Developer: Uncle J</p>
+            <p>Email: support@margin.app</p>
+        </div>
+    </main>
+
+    <footer>
+        <nav>
+            <a href="index-en.html">Home</a>
+            <a href="privacy-en.html">Privacy Policy</a>
+            <a href="terms-en.html">Terms of Service</a>
+        </nav>
+        <p class="copyright">© 2026 Uncle J</p>
+    </footer>
+</body>
+</html>

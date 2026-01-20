@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARGIN - Calendar Inbox</title>
+    <meta name="description" content="MARGIN is a calendar inbox. Screenshot, forward, paste — toss it in and it goes to your calendar. Never forget again.">
+    <meta name="keywords" content="MARGIN, calendar inbox, calendar, iOS App, AI recognition, screenshot to calendar">
+    <link rel="alternate" hreflang="zh-CN" href="index.html">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #faf9f7;
+            --text: #1a1a1a;
+            --text-light: #666;
+            --text-muted: #999;
+            --border: #e8e6e0;
+            --accent: #d97706;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        .lang-switch {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            font-size: 14px;
+            z-index: 100;
+        }
+
+        .lang-switch a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .lang-switch a:hover {
+            color: var(--text);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 120px 24px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        section.short {
+            min-height: auto;
+            padding: 80px 24px;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 32px;
+        }
+
+        .hero .tagline {
+            font-size: 24px;
+            color: var(--text-light);
+            line-height: 2;
+            margin-bottom: 64px;
+        }
+
+        /* Flow Demo */
+        .flow-demo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 48px;
+        }
+
+        .flow-step {
+            background: #fffef9;
+            border: 1px solid var(--border);
+            padding: 24px 32px;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .flow-step .icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .flow-step .label {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .flow-arrow {
+            font-size: 24px;
+            color: var(--text-muted);
+        }
+
+        .flow-time {
+            margin-top: 32px;
+            font-size: 18px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* Insight Sections */
+        .insight {
+            border-top: 1px solid var(--border);
+        }
+
+        .insight .label {
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .insight h2 {
+            font-size: 36px;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
+
+        .insight p {
+            font-size: 18px;
+            color: var(--text-light);
+            line-height: 2;
+            max-width: 560px;
+        }
+
+        .insight .highlight {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* Pain Point */
+        .pain-quote {
+            background: #fff5f5;
+            border-left: 3px solid #e53e3e;
+            padding: 32px 40px;
+            margin: 40px 0;
+            font-size: 20px;
+            font-style: italic;
+            color: #c53030;
+        }
+
+        /* Contrast Section */
+        .contrast {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            margin-top: 48px;
+        }
+
+        .contrast-col h3 {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+        }
+
+        .contrast-col ul {
+            list-style: none;
+            font-size: 16px;
+            color: var(--text-light);
+        }
+
+        .contrast-col ul li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .contrast-col.wrong ul li {
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+
+        /* Pricing */
+        .pricing {
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .pricing .tier {
+            margin-bottom: 48px;
+        }
+
+        .pricing .tier-name {
+            font-size: 14px;
+            color: var(--text-muted);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .pricing .price {
+            font-size: 56px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .pricing .price-note {
+            font-size: 16px;
+            color: var(--text-light);
+        }
+
+        .pricing .price-divider {
+            width: 48px;
+            height: 1px;
+            background: var(--border);
+            margin: 48px auto;
+        }
+
+        .pricing .price-insight {
+            font-size: 16px;
+            color: var(--text-muted);
+            max-width: 400px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+
+        /* Trust */
+        .trust-section {
+            text-align: center;
+        }
+
+        .trust-section h2 {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 48px;
+        }
+
+        .trust-list {
+            font-size: 18px;
+            color: var(--text-light);
+            line-height: 2.4;
+        }
+
+        .trust-list strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--text);
+            color: var(--bg);
+            padding: 20px 48px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: opacity 0.3s;
+            border-radius: 12px;
+        }
+
+        .cta:hover {
+            opacity: 0.85;
+        }
+
+        .cta svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .cta-note {
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 64px 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        footer nav {
+            margin-bottom: 24px;
+        }
+
+        footer a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 16px;
+            font-size: 14px;
+        }
+
+        footer a:hover {
+            color: var(--text);
+        }
+
+        footer .copyright {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            section { padding: 80px 20px; }
+            .hero h1 { font-size: 48px; }
+            .hero .tagline { font-size: 20px; }
+            .insight h2 { font-size: 28px; }
+            .flow-demo { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); }
+            .contrast { grid-template-columns: 1fr; gap: 40px; }
+            .pricing .price { font-size: 42px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switch">
+        <a href="index.html">中文</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>MARGIN</h1>
+        <p class="tagline">
+            Calendar Inbox<br>
+            Toss it in, it goes to calendar
+        </p>
+        <div class="flow-demo">
+            <div class="flow-step">
+                <div class="icon">📸</div>
+                <div class="label">Screenshot</div>
+            </div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">
+                <div class="icon">🤖</div>
+                <div class="label">Recognize</div>
+            </div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">
+                <div class="icon">✓</div>
+                <div class="label">Confirm</div>
+            </div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">
+                <div class="icon">📅</div>
+                <div class="label">Calendar</div>
+            </div>
+        </div>
+        <p class="flow-time">The whole process &lt; 10 seconds</p>
+    </section>
+
+    <!-- Pain Point -->
+    <section class="insight">
+        <p class="label">Problem</p>
+        <h2>That moment you curse yourself</h2>
+        <div class="pain-quote">
+            "The wedding is TOMORROW?!"<br>
+            "I missed my kid's parent meeting again!"<br>
+            "I saw that meeting invite, why isn't it in my calendar?!"
+        </div>
+        <p>
+            The problem isn't "adding events is hard."<br>
+            The problem is "<span class="highlight">I didn't add it then, so I forgot later</span>."
+        </p>
+    </section>
+
+    <!-- Solution -->
+    <section class="insight">
+        <p class="label">Solution</p>
+        <h2>Make "I didn't add it"<br>never happen again</h2>
+        <p>
+            Got a class schedule, wedding invite, meeting screenshot?<br>
+            Don't stop to organize it.<br>
+            <span class="highlight">Screenshot, forward, paste</span> — toss it into MARGIN.<br>
+            It recognizes, you confirm, it goes to your calendar.
+        </p>
+    </section>
+
+    <!-- Trust -->
+    <section class="insight">
+        <p class="label">Promise</p>
+        <h2>Never decides for you</h2>
+        <p>
+            Calendar is a "high-stakes system."<br>
+            One auto-mistake = trust destroyed.<br><br>
+            So MARGIN <span class="highlight">never auto-writes to calendar</span>.<br>
+            Every event requires your confirmation.
+        </p>
+    </section>
+
+    <!-- What it's NOT -->
+    <section class="insight">
+        <p class="label">Boundaries</p>
+        <h2>Peace of mind, not excitement</h2>
+        <div class="contrast">
+            <div class="contrast-col wrong">
+                <h3>MARGIN is NOT</h3>
+                <ul>
+                    <li>A calendar app</li>
+                    <li>A todo app</li>
+                    <li>An AI chat assistant</li>
+                    <li>A notification bomber</li>
+                </ul>
+            </div>
+            <div class="contrast-col">
+                <h3>MARGIN IS</h3>
+                <ul>
+                    <li>A calendar inbox</li>
+                    <li>A screenshot recognizer</li>
+                    <li>A calendar entry point</li>
+                    <li>A peace-of-mind tool</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Briefing -->
+    <section class="insight">
+        <p class="label">Daily Briefing</p>
+        <h2>Every morning,<br>like having a secretary glance at your day</h2>
+        <p>
+            What kind of day is today?<br>
+            What are the three things you can't miss?<br>
+            Where's your only free slot?<br><br>
+            <span class="highlight">This is why you keep paying</span>—<br>
+            Not for features, but for daily delivery.
+        </p>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <div class="tier">
+            <p class="tier-name">Standard</p>
+            <div class="price">$7.99</div>
+            <p class="price-note">per year</p>
+        </div>
+        <div class="tier">
+            <p class="tier-name">Pro</p>
+            <div class="price">$17.99</div>
+            <p class="price-note">per year · Voice briefing + Weekly/Monthly analysis</p>
+        </div>
+        <div class="price-divider"></div>
+        <p class="price-insight">
+            This is a service that works every day, not a toy.<br>
+            Serious pricing, serious delivery.
+        </p>
+    </section>
+
+    <!-- Privacy -->
+    <section class="trust-section short">
+        <h2>About Privacy</h2>
+        <p class="trust-list">
+            <strong>Your data stays on your device</strong><br>
+            No tracking, no data selling<br>
+            Images deleted after recognition<br>
+            Calendar data processed locally
+        </p>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section short">
+        <!-- TODO: Replace with real App Store link after approval -->
+        <a href="https://apps.apple.com/app/margin/id000000000" class="cta">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            Download on App Store
+        </a>
+        <p class="cta-note">Requires iOS 17.0 or later</p>
+    </section>
+
+    <footer>
+        <nav>
+            <a href="support-en.html">Support</a>
+            <a href="privacy-en.html">Privacy Policy</a>
+            <a href="terms-en.html">Terms of Service</a>
+        </nav>
+        <p class="copyright">© 2026 Uncle J</p>
+    </footer>
+</body>
+</html>
