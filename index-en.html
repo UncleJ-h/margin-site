@@ -16,7 +16,8 @@
             --text-light: #666;
             --text-muted: #999;
             --border: #e8e6e0;
-            --accent: #d97706;
+            --amber: #F5A623;
+            --amber-light: #FEF3E2;
         }
 
         body {
@@ -45,37 +46,59 @@
 
         /* Sections */
         section {
+            padding: 120px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section.full-width {
+            max-width: none;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        section.short {
+            padding: 80px 24px;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 120px 24px;
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        section.short {
-            min-height: auto;
-            padding: 80px 24px;
-        }
-
-        /* Hero */
-        .hero {
+            align-items: center;
             text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-icon {
+            width: 160px;
+            height: 160px;
+            border-radius: 36px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            margin-bottom: 48px;
         }
 
         .hero h1 {
             font-size: 72px;
             font-weight: 600;
             letter-spacing: -0.02em;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
 
         .hero .tagline {
-            font-size: 24px;
+            font-size: 28px;
             color: var(--text-light);
-            line-height: 2;
-            margin-bottom: 64px;
+            line-height: 1.8;
+            margin-bottom: 48px;
+        }
+
+        .hero .tagline strong {
+            color: var(--amber);
+            font-weight: 500;
         }
 
         /* Flow Demo */
@@ -83,52 +106,175 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 24px;
+            gap: 20px;
             flex-wrap: wrap;
-            margin-top: 48px;
+            margin-bottom: 32px;
         }
 
         .flow-step {
-            background: #fffef9;
+            background: white;
             border: 1px solid var(--border);
+            border-radius: 16px;
             padding: 24px 32px;
             text-align: center;
-            min-width: 120px;
+            min-width: 100px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
 
         .flow-step .icon {
             font-size: 32px;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .flow-step .label {
             font-size: 14px;
             color: var(--text-light);
+            font-weight: 500;
         }
 
         .flow-arrow {
             font-size: 24px;
-            color: var(--text-muted);
+            color: var(--amber);
         }
 
         .flow-time {
-            margin-top: 32px;
             font-size: 18px;
-            color: var(--accent);
+            color: var(--amber);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           PRODUCT SHOWCASE - Screenshots
+           ============================================ */
+        .showcase {
+            background: linear-gradient(180deg, var(--bg) 0%, #f0efe9 100%);
+            padding: 120px 0;
+            overflow: hidden;
+        }
+
+        .showcase-title {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .showcase-title .label {
+            font-size: 12px;
+            color: var(--amber);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .showcase-title h2 {
+            font-size: 42px;
+            font-weight: 600;
+        }
+
+        .screenshot-scroll {
+            display: flex;
+            gap: 32px;
+            padding: 0 48px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .screenshot-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .screenshot-item {
+            flex: 0 0 auto;
+            scroll-snap-align: center;
+            text-align: center;
+        }
+
+        .screenshot-item img {
+            height: 580px;
+            width: auto;
+            border-radius: 24px;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.12);
+        }
+
+        .screenshot-item .caption {
+            margin-top: 24px;
+            font-size: 16px;
+            color: var(--text-light);
             font-weight: 500;
         }
 
-        /* Insight Sections */
+        /* ============================================
+           NARRATIVE - Onboarding Flow
+           ============================================ */
+        .narrative {
+            padding: 160px 24px;
+        }
+
+        .narrative-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .narrative-step {
+            text-align: center;
+        }
+
+        .narrative-step .number {
+            width: 48px;
+            height: 48px;
+            background: var(--amber);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0 auto 24px;
+        }
+
+        .narrative-step img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .narrative-step h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .narrative-step p {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           INSIGHT SECTIONS
+           ============================================ */
         .insight {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 120px 24px;
             border-top: 1px solid var(--border);
         }
 
         .insight .label {
             font-size: 12px;
-            color: var(--text-muted);
+            color: var(--amber);
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
+            font-weight: 600;
         }
 
         .insight h2 {
@@ -142,7 +288,6 @@
             font-size: 18px;
             color: var(--text-light);
             line-height: 2;
-            max-width: 560px;
         }
 
         .insight .highlight {
@@ -150,156 +295,248 @@
             font-weight: 500;
         }
 
-        /* Pain Point */
+        /* Pain Quote */
         .pain-quote {
-            background: #fff5f5;
-            border-left: 3px solid #e53e3e;
+            background: #FFF5F5;
+            border-left: 4px solid #E53E3E;
             padding: 32px 40px;
             margin: 40px 0;
             font-size: 20px;
             font-style: italic;
-            color: #c53030;
+            color: #C53030;
+            border-radius: 0 12px 12px 0;
         }
 
-        /* Contrast Section */
+        /* Contrast */
         .contrast {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 64px;
+            gap: 48px;
             margin-top: 48px;
         }
 
         .contrast-col h3 {
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-muted);
             letter-spacing: 0.1em;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .contrast-col ul {
             list-style: none;
-            font-size: 16px;
-            color: var(--text-light);
         }
 
         .contrast-col ul li {
-            padding: 12px 0;
+            padding: 14px 0;
+            font-size: 16px;
+            color: var(--text-light);
             border-bottom: 1px solid var(--border);
         }
 
         .contrast-col.wrong ul li {
             text-decoration: line-through;
-            opacity: 0.5;
+            opacity: 0.4;
         }
 
-        /* Pricing */
+        /* ============================================
+           PRICING
+           ============================================ */
         .pricing {
             text-align: center;
-            border-top: 1px solid var(--border);
+            padding: 120px 24px;
+            background: linear-gradient(180deg, var(--bg) 0%, var(--amber-light) 100%);
         }
 
-        .pricing .tier {
+        .pricing .label {
+            font-size: 12px;
+            color: var(--amber);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+
+        .pricing h2 {
+            font-size: 36px;
+            font-weight: 500;
+            margin-bottom: 64px;
+        }
+
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
             margin-bottom: 48px;
         }
 
-        .pricing .tier-name {
+        .pricing-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 24px;
+            padding: 48px 40px;
+            min-width: 280px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--amber);
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: "Recommended";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--amber);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .pricing-card .tier {
             font-size: 14px;
             color: var(--text-muted);
-            letter-spacing: 0.2em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             margin-bottom: 16px;
         }
 
-        .pricing .price {
-            font-size: 56px;
+        .pricing-card .price {
+            font-size: 48px;
             font-weight: 600;
             margin-bottom: 8px;
         }
 
-        .pricing .price-note {
+        .pricing-card .period {
             font-size: 16px;
             color: var(--text-light);
+            margin-bottom: 24px;
         }
 
-        .pricing .price-divider {
-            width: 48px;
-            height: 1px;
-            background: var(--border);
-            margin: 48px auto;
+        .pricing-card .features {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 2;
         }
 
-        .pricing .price-insight {
+        .pricing-insight {
             font-size: 16px;
             color: var(--text-muted);
-            max-width: 400px;
+            max-width: 480px;
             margin: 0 auto;
             line-height: 2;
         }
 
-        /* Trust */
+        /* ============================================
+           TRUST / PRIVACY
+           ============================================ */
         .trust-section {
             text-align: center;
+            padding: 100px 24px;
+            background: white;
         }
 
         .trust-section h2 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 500;
             margin-bottom: 48px;
         }
 
-        .trust-list {
-            font-size: 18px;
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .trust-item {
+            padding: 24px;
+        }
+
+        .trust-item .icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .trust-item h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .trust-item p {
+            font-size: 14px;
             color: var(--text-light);
-            line-height: 2.4;
         }
 
-        .trust-list strong {
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        /* CTA */
+        /* ============================================
+           CTA
+           ============================================ */
         .cta-section {
             text-align: center;
-            border-top: 1px solid var(--border);
+            padding: 120px 24px;
+            background: var(--text);
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .cta-section .subtitle {
+            font-size: 20px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 48px;
         }
 
         .cta {
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: var(--text);
-            color: var(--bg);
+            background: white;
+            color: var(--text);
             padding: 20px 48px;
             text-decoration: none;
             font-size: 16px;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            transition: opacity 0.3s;
-            border-radius: 12px;
+            font-weight: 600;
+            border-radius: 16px;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .cta:hover {
-            opacity: 0.85;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         }
 
         .cta svg {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
         }
 
         .cta-note {
             margin-top: 24px;
             font-size: 14px;
-            color: var(--text-muted);
+            color: rgba(255,255,255,0.5);
         }
 
-        /* Footer */
+        /* ============================================
+           FOOTER
+           ============================================ */
         footer {
             text-align: center;
             padding: 64px 24px;
-            border-top: 1px solid var(--border);
+            background: var(--text);
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         footer nav {
@@ -307,31 +544,48 @@
         }
 
         footer a {
-            color: var(--text-light);
+            color: rgba(255,255,255,0.6);
             text-decoration: none;
             margin: 0 16px;
             font-size: 14px;
         }
 
         footer a:hover {
-            color: var(--text);
+            color: white;
         }
 
         footer .copyright {
             font-size: 12px;
-            color: var(--text-muted);
+            color: rgba(255,255,255,0.4);
         }
 
-        /* Responsive */
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 900px) {
+            .narrative-grid {
+                grid-template-columns: 1fr;
+                gap: 64px;
+            }
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 600px) {
-            section { padding: 80px 20px; }
             .hero h1 { font-size: 48px; }
-            .hero .tagline { font-size: 20px; }
-            .insight h2 { font-size: 28px; }
-            .flow-demo { flex-direction: column; }
+            .hero .tagline { font-size: 22px; }
+            .hero-icon { width: 120px; height: 120px; border-radius: 28px; }
+            .flow-demo { flex-direction: column; gap: 16px; }
             .flow-arrow { transform: rotate(90deg); }
-            .contrast { grid-template-columns: 1fr; gap: 40px; }
-            .pricing .price { font-size: 42px; }
+            .showcase-title h2 { font-size: 32px; }
+            .screenshot-item img { height: 420px; }
+            .insight h2 { font-size: 28px; }
+            .contrast { grid-template-columns: 1fr; gap: 32px; }
+            .pricing h2 { font-size: 28px; }
+            .pricing-card { min-width: 100%; }
+            .trust-grid { grid-template-columns: 1fr; }
+            .cta-section h2 { font-size: 32px; }
         }
     </style>
 </head>
@@ -340,12 +594,15 @@
         <a href="index.html">中文</a>
     </div>
 
-    <!-- Hero -->
+    <!-- ============================================
+         HERO
+         ============================================ -->
     <section class="hero">
+        <img src="assets/app-icon.png" alt="MARGIN App Icon" class="hero-icon">
         <h1>MARGIN</h1>
         <p class="tagline">
             Calendar Inbox<br>
-            Toss it in, it goes to calendar
+            <strong>Toss it in, it goes to calendar</strong>
         </p>
         <div class="flow-demo">
             <div class="flow-step">
@@ -368,10 +625,70 @@
                 <div class="label">Calendar</div>
             </div>
         </div>
-        <p class="flow-time">The whole process &lt; 10 seconds</p>
+        <p class="flow-time">The whole process < 10 seconds</p>
     </section>
 
-    <!-- Pain Point -->
+    <!-- ============================================
+         PRODUCT SHOWCASE
+         ============================================ -->
+    <section class="showcase full-width">
+        <div class="showcase-title">
+            <p class="label">Product Preview</p>
+            <h2>See how it works</h2>
+        </div>
+        <div class="screenshot-scroll">
+            <div class="screenshot-item">
+                <img src="assets/01-screenshot-to-calendar.png" alt="Screenshot to Calendar">
+                <p class="caption">Share Screenshot</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="assets/02-we-read-it.png" alt="AI Recognition">
+                <p class="caption">AI Recognition</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="assets/03-one-tap-add.png" alt="One Tap Add">
+                <p class="caption">One Tap Add</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="assets/04-in-calendar.png" alt="In Calendar">
+                <p class="caption">In Calendar</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="assets/05-schedule-inbox.png" alt="Schedule Inbox">
+                <p class="caption">Inbox</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         NARRATIVE - The Story
+         ============================================ -->
+    <section class="narrative">
+        <div class="narrative-grid">
+            <div class="narrative-step">
+                <div class="number">1</div>
+                <img src="assets/01-scattered.png" alt="Scattered Events">
+                <h3>Events everywhere</h3>
+                <p>WeChat screenshots, email invites, social events…<br>You know they exist, but can't find them.</p>
+            </div>
+            <div class="narrative-step">
+                <div class="number">2</div>
+                <img src="assets/02-toss-in.png" alt="Toss It In">
+                <h3>Toss it in</h3>
+                <p>See it, share it. No need to stop and organize.<br>Screenshot, forward, paste — into MARGIN.</p>
+            </div>
+            <div class="narrative-step">
+                <div class="number">3</div>
+                <img src="assets/03-organized.png" alt="All Organized">
+                <h3>All organized</h3>
+                <p>Confirm once, it's in your calendar.<br>Never "forgot again".</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PAIN POINT
+         ============================================ -->
     <section class="insight">
         <p class="label">Problem</p>
         <h2>That moment you curse yourself</h2>
@@ -386,7 +703,9 @@
         </p>
     </section>
 
-    <!-- Solution -->
+    <!-- ============================================
+         SOLUTION
+         ============================================ -->
     <section class="insight">
         <p class="label">Solution</p>
         <h2>Make "I didn't add it"<br>never happen again</h2>
@@ -398,7 +717,9 @@
         </p>
     </section>
 
-    <!-- Trust -->
+    <!-- ============================================
+         TRUST PROMISE
+         ============================================ -->
     <section class="insight">
         <p class="label">Promise</p>
         <h2>Never decides for you</h2>
@@ -410,7 +731,9 @@
         </p>
     </section>
 
-    <!-- What it's NOT -->
+    <!-- ============================================
+         BOUNDARIES
+         ============================================ -->
     <section class="insight">
         <p class="label">Boundaries</p>
         <h2>Peace of mind, not excitement</h2>
@@ -436,51 +759,75 @@
         </div>
     </section>
 
-    <!-- Daily Briefing -->
-    <section class="insight">
-        <p class="label">Daily Briefing</p>
-        <h2>Every morning,<br>like having a secretary glance at your day</h2>
-        <p>
-            What kind of day is today?<br>
-            What are the three things you can't miss?<br>
-            Where's your only free slot?<br><br>
-            <span class="highlight">This is why you keep paying</span>—<br>
-            Not for features, but for daily delivery.
-        </p>
-    </section>
-
-    <!-- Pricing -->
+    <!-- ============================================
+         PRICING
+         ============================================ -->
     <section class="pricing">
-        <div class="tier">
-            <p class="tier-name">Standard</p>
-            <div class="price">$7.99</div>
-            <p class="price-note">per year</p>
+        <p class="label">Pricing</p>
+        <h2>A service that works every day, not a toy</h2>
+        <div class="pricing-cards">
+            <div class="pricing-card">
+                <p class="tier">Standard</p>
+                <div class="price">$7.99</div>
+                <p class="period">per year</p>
+                <p class="features">
+                    Screenshot recognition<br>
+                    Daily briefing<br>
+                    Unlimited use
+                </p>
+            </div>
+            <div class="pricing-card featured">
+                <p class="tier">Pro</p>
+                <div class="price">$17.99</div>
+                <p class="period">per year</p>
+                <p class="features">
+                    Everything in Standard<br>
+                    Voice briefing<br>
+                    Weekly/Monthly analysis
+                </p>
+            </div>
         </div>
-        <div class="tier">
-            <p class="tier-name">Pro</p>
-            <div class="price">$17.99</div>
-            <p class="price-note">per year · Voice briefing + Weekly/Monthly analysis</p>
-        </div>
-        <div class="price-divider"></div>
-        <p class="price-insight">
-            This is a service that works every day, not a toy.<br>
-            Serious pricing, serious delivery.
+        <p class="pricing-insight">
+            Serious pricing, serious delivery.<br>
+            This is a service that works for you every day.
         </p>
     </section>
 
-    <!-- Privacy -->
-    <section class="trust-section short">
+    <!-- ============================================
+         TRUST / PRIVACY
+         ============================================ -->
+    <section class="trust-section">
         <h2>About Privacy</h2>
-        <p class="trust-list">
-            <strong>Your data stays on your device</strong><br>
-            No tracking, no data selling<br>
-            Images deleted after recognition<br>
-            Calendar data processed locally
-        </p>
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="icon">📱</div>
+                <h3>Local Storage</h3>
+                <p>Data stays on your device</p>
+            </div>
+            <div class="trust-item">
+                <div class="icon">🚫</div>
+                <h3>No Tracking</h3>
+                <p>No analytics SDKs</p>
+            </div>
+            <div class="trust-item">
+                <div class="icon">🗑️</div>
+                <h3>Instant Delete</h3>
+                <p>Images deleted after recognition</p>
+            </div>
+            <div class="trust-item">
+                <div class="icon">🔒</div>
+                <h3>Secure Transfer</h3>
+                <p>TLS 1.3 encryption</p>
+            </div>
+        </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta-section short">
+    <!-- ============================================
+         CTA
+         ============================================ -->
+    <section class="cta-section">
+        <h2>Never "forgot again"</h2>
+        <p class="subtitle">Start tossing your events today</p>
         <!-- TODO: Replace with real App Store link after approval -->
         <a href="https://apps.apple.com/app/margin/id000000000" class="cta">
             <svg viewBox="0 0 24 24" fill="currentColor">
@@ -491,6 +838,9 @@
         <p class="cta-note">Requires iOS 17.0 or later</p>
     </section>
 
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
     <footer>
         <nav>
             <a href="support-en.html">Support</a>

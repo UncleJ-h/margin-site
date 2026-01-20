@@ -16,7 +16,8 @@
             --text-light: #666;
             --text-muted: #999;
             --border: #e8e6e0;
-            --accent: #d97706;
+            --amber: #F5A623;
+            --amber-light: #FEF3E2;
         }
 
         body {
@@ -45,37 +46,59 @@
 
         /* Sections */
         section {
+            padding: 120px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section.full-width {
+            max-width: none;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        section.short {
+            padding: 80px 24px;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 120px 24px;
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        section.short {
-            min-height: auto;
-            padding: 80px 24px;
-        }
-
-        /* Hero */
-        .hero {
+            align-items: center;
             text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-icon {
+            width: 160px;
+            height: 160px;
+            border-radius: 36px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            margin-bottom: 48px;
         }
 
         .hero h1 {
             font-size: 72px;
             font-weight: 600;
             letter-spacing: -0.02em;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
 
         .hero .tagline {
-            font-size: 24px;
+            font-size: 28px;
             color: var(--text-light);
-            line-height: 2;
-            margin-bottom: 64px;
+            line-height: 1.8;
+            margin-bottom: 48px;
+        }
+
+        .hero .tagline strong {
+            color: var(--amber);
+            font-weight: 500;
         }
 
         /* Flow Demo */
@@ -83,52 +106,175 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 24px;
+            gap: 20px;
             flex-wrap: wrap;
-            margin-top: 48px;
+            margin-bottom: 32px;
         }
 
         .flow-step {
-            background: #fffef9;
+            background: white;
             border: 1px solid var(--border);
+            border-radius: 16px;
             padding: 24px 32px;
             text-align: center;
-            min-width: 120px;
+            min-width: 100px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
 
         .flow-step .icon {
             font-size: 32px;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .flow-step .label {
             font-size: 14px;
             color: var(--text-light);
+            font-weight: 500;
         }
 
         .flow-arrow {
             font-size: 24px;
-            color: var(--text-muted);
+            color: var(--amber);
         }
 
         .flow-time {
-            margin-top: 32px;
             font-size: 18px;
-            color: var(--accent);
+            color: var(--amber);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           PRODUCT SHOWCASE - Screenshots
+           ============================================ */
+        .showcase {
+            background: linear-gradient(180deg, var(--bg) 0%, #f0efe9 100%);
+            padding: 120px 0;
+            overflow: hidden;
+        }
+
+        .showcase-title {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .showcase-title .label {
+            font-size: 12px;
+            color: var(--amber);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .showcase-title h2 {
+            font-size: 42px;
+            font-weight: 600;
+        }
+
+        .screenshot-scroll {
+            display: flex;
+            gap: 32px;
+            padding: 0 48px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .screenshot-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .screenshot-item {
+            flex: 0 0 auto;
+            scroll-snap-align: center;
+            text-align: center;
+        }
+
+        .screenshot-item img {
+            height: 580px;
+            width: auto;
+            border-radius: 24px;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.12);
+        }
+
+        .screenshot-item .caption {
+            margin-top: 24px;
+            font-size: 16px;
+            color: var(--text-light);
             font-weight: 500;
         }
 
-        /* Insight Sections */
+        /* ============================================
+           NARRATIVE - Onboarding Flow
+           ============================================ */
+        .narrative {
+            padding: 160px 24px;
+        }
+
+        .narrative-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .narrative-step {
+            text-align: center;
+        }
+
+        .narrative-step .number {
+            width: 48px;
+            height: 48px;
+            background: var(--amber);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0 auto 24px;
+        }
+
+        .narrative-step img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .narrative-step h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .narrative-step p {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           INSIGHT SECTIONS
+           ============================================ */
         .insight {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 120px 24px;
             border-top: 1px solid var(--border);
         }
 
         .insight .label {
             font-size: 12px;
-            color: var(--text-muted);
+            color: var(--amber);
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
+            font-weight: 600;
         }
 
         .insight h2 {
@@ -142,7 +288,6 @@
             font-size: 18px;
             color: var(--text-light);
             line-height: 2;
-            max-width: 560px;
         }
 
         .insight .highlight {
@@ -150,156 +295,248 @@
             font-weight: 500;
         }
 
-        /* Pain Point */
+        /* Pain Quote */
         .pain-quote {
-            background: #fff5f5;
-            border-left: 3px solid #e53e3e;
+            background: #FFF5F5;
+            border-left: 4px solid #E53E3E;
             padding: 32px 40px;
             margin: 40px 0;
             font-size: 20px;
             font-style: italic;
-            color: #c53030;
+            color: #C53030;
+            border-radius: 0 12px 12px 0;
         }
 
-        /* Contrast Section */
+        /* Contrast */
         .contrast {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 64px;
+            gap: 48px;
             margin-top: 48px;
         }
 
         .contrast-col h3 {
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-muted);
             letter-spacing: 0.1em;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .contrast-col ul {
             list-style: none;
-            font-size: 16px;
-            color: var(--text-light);
         }
 
         .contrast-col ul li {
-            padding: 12px 0;
+            padding: 14px 0;
+            font-size: 16px;
+            color: var(--text-light);
             border-bottom: 1px solid var(--border);
         }
 
         .contrast-col.wrong ul li {
             text-decoration: line-through;
-            opacity: 0.5;
+            opacity: 0.4;
         }
 
-        /* Pricing */
+        /* ============================================
+           PRICING
+           ============================================ */
         .pricing {
             text-align: center;
-            border-top: 1px solid var(--border);
+            padding: 120px 24px;
+            background: linear-gradient(180deg, var(--bg) 0%, var(--amber-light) 100%);
         }
 
-        .pricing .tier {
+        .pricing .label {
+            font-size: 12px;
+            color: var(--amber);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+
+        .pricing h2 {
+            font-size: 36px;
+            font-weight: 500;
+            margin-bottom: 64px;
+        }
+
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
             margin-bottom: 48px;
         }
 
-        .pricing .tier-name {
+        .pricing-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 24px;
+            padding: 48px 40px;
+            min-width: 280px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--amber);
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: "推荐";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--amber);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .pricing-card .tier {
             font-size: 14px;
             color: var(--text-muted);
-            letter-spacing: 0.2em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             margin-bottom: 16px;
         }
 
-        .pricing .price {
-            font-size: 56px;
+        .pricing-card .price {
+            font-size: 48px;
             font-weight: 600;
             margin-bottom: 8px;
         }
 
-        .pricing .price-note {
+        .pricing-card .period {
             font-size: 16px;
             color: var(--text-light);
+            margin-bottom: 24px;
         }
 
-        .pricing .price-divider {
-            width: 48px;
-            height: 1px;
-            background: var(--border);
-            margin: 48px auto;
+        .pricing-card .features {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 2;
         }
 
-        .pricing .price-insight {
+        .pricing-insight {
             font-size: 16px;
             color: var(--text-muted);
-            max-width: 400px;
+            max-width: 480px;
             margin: 0 auto;
             line-height: 2;
         }
 
-        /* Trust */
+        /* ============================================
+           TRUST / PRIVACY
+           ============================================ */
         .trust-section {
             text-align: center;
+            padding: 100px 24px;
+            background: white;
         }
 
         .trust-section h2 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 500;
             margin-bottom: 48px;
         }
 
-        .trust-list {
-            font-size: 18px;
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .trust-item {
+            padding: 24px;
+        }
+
+        .trust-item .icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .trust-item h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .trust-item p {
+            font-size: 14px;
             color: var(--text-light);
-            line-height: 2.4;
         }
 
-        .trust-list strong {
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        /* CTA */
+        /* ============================================
+           CTA
+           ============================================ */
         .cta-section {
             text-align: center;
-            border-top: 1px solid var(--border);
+            padding: 120px 24px;
+            background: var(--text);
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .cta-section .subtitle {
+            font-size: 20px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 48px;
         }
 
         .cta {
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: var(--text);
-            color: var(--bg);
+            background: white;
+            color: var(--text);
             padding: 20px 48px;
             text-decoration: none;
             font-size: 16px;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            transition: opacity 0.3s;
-            border-radius: 12px;
+            font-weight: 600;
+            border-radius: 16px;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .cta:hover {
-            opacity: 0.85;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         }
 
         .cta svg {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
         }
 
         .cta-note {
             margin-top: 24px;
             font-size: 14px;
-            color: var(--text-muted);
+            color: rgba(255,255,255,0.5);
         }
 
-        /* Footer */
+        /* ============================================
+           FOOTER
+           ============================================ */
         footer {
             text-align: center;
             padding: 64px 24px;
-            border-top: 1px solid var(--border);
+            background: var(--text);
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         footer nav {
@@ -307,31 +544,48 @@
         }
 
         footer a {
-            color: var(--text-light);
+            color: rgba(255,255,255,0.6);
             text-decoration: none;
             margin: 0 16px;
             font-size: 14px;
         }
 
         footer a:hover {
-            color: var(--text);
+            color: white;
         }
 
         footer .copyright {
             font-size: 12px;
-            color: var(--text-muted);
+            color: rgba(255,255,255,0.4);
         }
 
-        /* Responsive */
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 900px) {
+            .narrative-grid {
+                grid-template-columns: 1fr;
+                gap: 64px;
+            }
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 600px) {
-            section { padding: 80px 20px; }
             .hero h1 { font-size: 48px; }
-            .hero .tagline { font-size: 20px; }
-            .insight h2 { font-size: 28px; }
-            .flow-demo { flex-direction: column; }
+            .hero .tagline { font-size: 22px; }
+            .hero-icon { width: 120px; height: 120px; border-radius: 28px; }
+            .flow-demo { flex-direction: column; gap: 16px; }
             .flow-arrow { transform: rotate(90deg); }
-            .contrast { grid-template-columns: 1fr; gap: 40px; }
-            .pricing .price { font-size: 42px; }
+            .showcase-title h2 { font-size: 32px; }
+            .screenshot-item img { height: 420px; }
+            .insight h2 { font-size: 28px; }
+            .contrast { grid-template-columns: 1fr; gap: 32px; }
+            .pricing h2 { font-size: 28px; }
+            .pricing-card { min-width: 100%; }
+            .trust-grid { grid-template-columns: 1fr; }
+            .cta-section h2 { font-size: 32px; }
         }
     </style>
 </head>
@@ -340,12 +594,15 @@
         <a href="index-en.html">EN</a>
     </div>
 
-    <!-- Hero -->
+    <!-- ============================================
+         HERO
+         ============================================ -->
     <section class="hero">
+        <img src="assets/app-icon.png" alt="MARGIN App Icon" class="hero-icon">
         <h1>MARGIN</h1>
         <p class="tagline">
             日程收集箱<br>
-            随手一扔，就进日历
+            <strong>随手一扔，就进日历</strong>
         </p>
         <div class="flow-demo">
             <div class="flow-step">
@@ -368,10 +625,70 @@
                 <div class="label">进日历</div>
             </div>
         </div>
-        <p class="flow-time">整个过程 &lt; 10 秒</p>
+        <p class="flow-time">整个过程 < 10 秒</p>
     </section>
 
-    <!-- Pain Point -->
+    <!-- ============================================
+         PRODUCT SHOWCASE
+         ============================================ -->
+    <section class="showcase full-width">
+        <div class="showcase-title">
+            <p class="label">产品预览</p>
+            <h2>看看它长什么样</h2>
+        </div>
+        <div class="screenshot-scroll">
+            <div class="screenshot-item">
+                <img src="assets/01-screenshot-to-calendar.png" alt="截图转日历">
+                <p class="caption">分享截图</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="assets/02-we-read-it.png" alt="AI 识别">
+                <p class="caption">AI 识别</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="assets/03-one-tap-add.png" alt="一键添加">
+                <p class="caption">一键添加</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="assets/04-in-calendar.png" alt="已进日历">
+                <p class="caption">已进日历</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="assets/05-schedule-inbox.png" alt="日程收集箱">
+                <p class="caption">收集箱</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         NARRATIVE - The Story
+         ============================================ -->
+    <section class="narrative">
+        <div class="narrative-grid">
+            <div class="narrative-step">
+                <div class="number">1</div>
+                <img src="assets/01-scattered.png" alt="混乱的日程">
+                <h3>日程散落各处</h3>
+                <p>微信截图、邮件通知、朋友圈活动…<br>你知道它们在，但不知道去哪找。</p>
+            </div>
+            <div class="narrative-step">
+                <div class="number">2</div>
+                <img src="assets/02-toss-in.png" alt="随手扔进去">
+                <h3>随手扔进去</h3>
+                <p>看到就分享，不用停下来整理。<br>截图、转发、粘贴，扔进 MARGIN。</p>
+            </div>
+            <div class="narrative-step">
+                <div class="number">3</div>
+                <img src="assets/03-organized.png" alt="井井有条">
+                <h3>井井有条</h3>
+                <p>确认一下，就进日历。<br>再也不会「又忘了」。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PAIN POINT
+         ============================================ -->
     <section class="insight">
         <p class="label">问题</p>
         <h2>你骂自己的瞬间</h2>
@@ -386,7 +703,9 @@
         </p>
     </section>
 
-    <!-- Solution -->
+    <!-- ============================================
+         SOLUTION
+         ============================================ -->
     <section class="insight">
         <p class="label">解法</p>
         <h2>让「当时没录」<br>这件事不再发生</h2>
@@ -398,7 +717,9 @@
         </p>
     </section>
 
-    <!-- Trust -->
+    <!-- ============================================
+         TRUST PROMISE
+         ============================================ -->
     <section class="insight">
         <p class="label">承诺</p>
         <h2>永远不替你做决定</h2>
@@ -410,7 +731,9 @@
         </p>
     </section>
 
-    <!-- What it's NOT -->
+    <!-- ============================================
+         BOUNDARIES
+         ============================================ -->
     <section class="insight">
         <p class="label">边界</p>
         <h2>省心，不是兴奋</h2>
@@ -436,51 +759,75 @@
         </div>
     </section>
 
-    <!-- Daily Briefing -->
-    <section class="insight">
-        <p class="label">每日简报</p>
-        <h2>每天早上，<br>像有个秘书替你看一眼</h2>
-        <p>
-            今天是什么样的一天？<br>
-            三件不可错过的事是什么？<br>
-            唯一的空档在哪里？<br><br>
-            <span class="highlight">这才是你愿意持续付费的原因</span>——<br>
-            不是功能多，是每天都在工作。
-        </p>
-    </section>
-
-    <!-- Pricing -->
+    <!-- ============================================
+         PRICING
+         ============================================ -->
     <section class="pricing">
-        <div class="tier">
-            <p class="tier-name">Standard</p>
-            <div class="price">$7.99</div>
-            <p class="price-note">每年</p>
+        <p class="label">定价</p>
+        <h2>每天在工作的服务，不是玩具</h2>
+        <div class="pricing-cards">
+            <div class="pricing-card">
+                <p class="tier">Standard</p>
+                <div class="price">$7.99</div>
+                <p class="period">每年</p>
+                <p class="features">
+                    截图识别<br>
+                    每日简报<br>
+                    无限使用
+                </p>
+            </div>
+            <div class="pricing-card featured">
+                <p class="tier">Pro</p>
+                <div class="price">$17.99</div>
+                <p class="period">每年</p>
+                <p class="features">
+                    包含 Standard 全部功能<br>
+                    语音简报<br>
+                    周月分析
+                </p>
+            </div>
         </div>
-        <div class="tier">
-            <p class="tier-name">Pro</p>
-            <div class="price">$17.99</div>
-            <p class="price-note">每年 · 语音简报 + 周月分析</p>
-        </div>
-        <div class="price-divider"></div>
-        <p class="price-insight">
-            这是每天在工作的服务，不是玩具。<br>
-            认真收钱，认真交付。
+        <p class="pricing-insight">
+            认真收钱，认真交付。<br>
+            这是每天都在为你工作的服务。
         </p>
     </section>
 
-    <!-- Privacy -->
-    <section class="trust-section short">
+    <!-- ============================================
+         TRUST / PRIVACY
+         ============================================ -->
+    <section class="trust-section">
         <h2>关于隐私</h2>
-        <p class="trust-list">
-            <strong>数据留在你的设备</strong><br>
-            不追踪、不卖数据<br>
-            图片识别后立即删除<br>
-            日历数据本地处理
-        </p>
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="icon">📱</div>
+                <h3>本地存储</h3>
+                <p>数据留在你的设备</p>
+            </div>
+            <div class="trust-item">
+                <div class="icon">🚫</div>
+                <h3>不追踪</h3>
+                <p>无分析 SDK</p>
+            </div>
+            <div class="trust-item">
+                <div class="icon">🗑️</div>
+                <h3>即时删除</h3>
+                <p>图片识别后立即删除</p>
+            </div>
+            <div class="trust-item">
+                <div class="icon">🔒</div>
+                <h3>安全传输</h3>
+                <p>TLS 1.3 加密</p>
+            </div>
+        </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta-section short">
+    <!-- ============================================
+         CTA
+         ============================================ -->
+    <section class="cta-section">
+        <h2>不再「又忘了」</h2>
+        <p class="subtitle">从今天开始，日程随手扔</p>
         <!-- TODO: Replace with real App Store link after approval -->
         <a href="https://apps.apple.com/app/margin/id000000000" class="cta">
             <svg viewBox="0 0 24 24" fill="currentColor">
@@ -491,6 +838,9 @@
         <p class="cta-note">需要 iOS 17.0 或更高版本</p>
     </section>
 
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
     <footer>
         <nav>
             <a href="support.html">支持</a>
