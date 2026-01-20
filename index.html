@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MARGIN - 日程收集箱</title>
-    <meta name="description" content="MARGIN 是一个日程收集箱。截图、转发、粘贴，随手一扔就能进日历。不再「又忘了」。">
-    <meta name="keywords" content="MARGIN, 日程收集箱, 日历, iOS App, AI识别, 截图识别">
+    <meta name="description" content="随手扔进去，它帮你变成日历。让「当时没录，后来忘了」这件事不再发生。">
+    <meta name="keywords" content="MARGIN, 日程收集箱, 日历, iOS App, 截图识别">
     <link rel="alternate" hreflang="en" href="index-en.html">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -13,56 +13,46 @@
         :root {
             --bg: #faf9f7;
             --text: #1a1a1a;
-            --text-light: #666;
-            --text-muted: #999;
-            --border: #e8e6e0;
+            --text-secondary: #86868b;
+            --text-tertiary: #6e6e73;
+            --border: #d2d2d7;
             --amber: #F5A623;
-            --amber-light: #FEF3E2;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
-            line-height: 1.8;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -.022em;
             color: var(--text);
             background: var(--bg);
+            -webkit-font-smoothing: antialiased;
         }
 
         .lang-switch {
             position: fixed;
-            top: 24px;
-            right: 24px;
-            font-size: 14px;
+            top: 20px;
+            right: 20px;
+            font-size: 12px;
             z-index: 100;
         }
 
         .lang-switch a {
-            color: var(--text-muted);
+            color: var(--text-secondary);
             text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: 980px;
+            transition: all 0.3s;
         }
 
         .lang-switch a:hover {
             color: var(--text);
-        }
-
-        /* Sections */
-        section {
-            padding: 120px 24px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section.full-width {
-            max-width: none;
-            padding-left: 0;
-            padding-right: 0;
-        }
-
-        section.short {
-            padding: 80px 24px;
+            border-color: var(--text);
         }
 
         /* ============================================
-           HERO SECTION
+           HERO - Apple Style
            ============================================ */
         .hero {
             min-height: 100vh;
@@ -71,152 +61,217 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding-top: 80px;
+            padding: 120px 24px 80px;
+            background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
         }
 
         .hero-icon {
-            width: 160px;
-            height: 160px;
-            border-radius: 36px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            margin-bottom: 48px;
+            width: 128px;
+            height: 128px;
+            border-radius: 28px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+            margin-bottom: 40px;
+        }
+
+        .hero-eyebrow {
+            font-size: 21px;
+            line-height: 1.381;
+            font-weight: 600;
+            color: var(--amber);
+            margin-bottom: 12px;
         }
 
         .hero h1 {
-            font-size: 72px;
+            font-size: 56px;
+            line-height: 1.07143;
             font-weight: 600;
-            letter-spacing: -0.02em;
+            letter-spacing: -.005em;
             margin-bottom: 24px;
         }
 
-        .hero .tagline {
+        .hero-headline {
             font-size: 28px;
-            color: var(--text-light);
-            line-height: 1.8;
+            line-height: 1.14286;
+            font-weight: 600;
+            letter-spacing: .007em;
+            color: var(--text-secondary);
+            max-width: 600px;
             margin-bottom: 48px;
         }
 
-        .hero .tagline strong {
-            color: var(--amber);
-            font-weight: 500;
-        }
-
-        /* Flow Demo */
-        .flow-demo {
-            display: flex;
+        .hero-cta {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 32px;
+            gap: 8px;
+            background: var(--text);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 400;
+            transition: all 0.3s;
         }
 
-        .flow-step {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px 32px;
-            text-align: center;
-            min-width: 100px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        .hero-cta:hover {
+            background: #333;
+            transform: scale(1.02);
         }
 
-        .flow-step .icon {
-            font-size: 32px;
-            margin-bottom: 8px;
+        .hero-cta svg {
+            width: 20px;
+            height: 20px;
         }
 
-        .flow-step .label {
-            font-size: 14px;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-
-        .flow-arrow {
-            font-size: 24px;
-            color: var(--amber);
-        }
-
-        .flow-time {
-            font-size: 18px;
-            color: var(--amber);
-            font-weight: 600;
+        .hero-note {
+            margin-top: 16px;
+            font-size: 12px;
+            color: var(--text-tertiary);
         }
 
         /* ============================================
-           PRODUCT SHOWCASE - Screenshots
+           PRODUCT FILM - Screenshot Gallery
            ============================================ */
-        .showcase {
-            background: linear-gradient(180deg, var(--bg) 0%, #f0efe9 100%);
-            padding: 120px 0;
+        .product-film {
+            padding: 0;
             overflow: hidden;
+            background: linear-gradient(180deg, var(--bg) 0%, #f5f5f7 100%);
         }
 
-        .showcase-title {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-
-        .showcase-title .label {
-            font-size: 12px;
-            color: var(--amber);
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-
-        .showcase-title h2 {
-            font-size: 42px;
-            font-weight: 600;
-        }
-
-        .screenshot-scroll {
+        .film-scroll {
             display: flex;
-            gap: 32px;
-            padding: 0 48px;
+            gap: 24px;
+            padding: 80px 48px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
         }
 
-        .screenshot-scroll::-webkit-scrollbar {
-            display: none;
-        }
+        .film-scroll::-webkit-scrollbar { display: none; }
 
-        .screenshot-item {
+        .film-item {
             flex: 0 0 auto;
             scroll-snap-align: center;
-            text-align: center;
         }
 
-        .screenshot-item img {
-            height: 580px;
+        .film-item img {
+            height: 520px;
             width: auto;
-            border-radius: 24px;
-            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.12);
-        }
-
-        .screenshot-item .caption {
-            margin-top: 24px;
-            font-size: 16px;
-            color: var(--text-light);
-            font-weight: 500;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
 
         /* ============================================
-           NARRATIVE - Onboarding Flow
+           COPY SECTION - The Pain
+           ============================================ */
+        .copy-section {
+            padding: 120px 24px;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .copy-section.dark {
+            background: var(--text);
+            color: white;
+            max-width: none;
+        }
+
+        .copy-section.dark .copy-inner {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .copy-eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--amber);
+            margin-bottom: 24px;
+        }
+
+        .copy-section.dark .copy-eyebrow {
+            color: var(--amber);
+        }
+
+        .copy-headline {
+            font-size: 48px;
+            line-height: 1.08349;
+            font-weight: 600;
+            letter-spacing: -.003em;
+            margin-bottom: 32px;
+        }
+
+        .copy-body {
+            font-size: 21px;
+            line-height: 1.4811;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .copy-section.dark .copy-body {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .copy-body strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .copy-section.dark .copy-body strong {
+            color: white;
+        }
+
+        /* Pain Quote */
+        .pain-quote {
+            background: rgba(229, 62, 62, 0.08);
+            border-radius: 12px;
+            padding: 32px;
+            margin: 40px 0;
+            font-size: 19px;
+            line-height: 1.6;
+            color: #c53030;
+            font-style: italic;
+        }
+
+        .copy-section.dark .pain-quote {
+            background: rgba(229, 62, 62, 0.15);
+            color: #feb2b2;
+        }
+
+        /* ============================================
+           NARRATIVE - Three Steps
            ============================================ */
         .narrative {
             padding: 160px 24px;
+            background: #f5f5f7;
+        }
+
+        .narrative-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 80px;
+        }
+
+        .narrative-header h2 {
+            font-size: 48px;
+            line-height: 1.08349;
+            font-weight: 600;
+            letter-spacing: -.003em;
+            margin-bottom: 16px;
+        }
+
+        .narrative-header p {
+            font-size: 21px;
+            color: var(--text-secondary);
         }
 
         .narrative-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
-            max-width: 1100px;
+            gap: 32px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -224,161 +279,140 @@
             text-align: center;
         }
 
-        .narrative-step .number {
-            width: 48px;
-            height: 48px;
-            background: var(--amber);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: 600;
-            margin: 0 auto 24px;
-        }
-
         .narrative-step img {
             width: 100%;
-            max-width: 320px;
-            border-radius: 16px;
+            max-width: 280px;
+            border-radius: 20px;
             margin-bottom: 24px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         }
 
         .narrative-step h3 {
             font-size: 24px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .narrative-step p {
-            font-size: 16px;
-            color: var(--text-light);
-            line-height: 1.7;
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.47059;
         }
 
         /* ============================================
-           INSIGHT SECTIONS
+           PROMISE - Trust Section
            ============================================ */
-        .insight {
-            max-width: 720px;
-            margin: 0 auto;
+        .promise {
             padding: 120px 24px;
-            border-top: 1px solid var(--border);
+            text-align: center;
+            background: white;
         }
 
-        .insight .label {
-            font-size: 12px;
-            color: var(--amber);
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            margin-bottom: 32px;
+        .promise-headline {
+            font-size: 48px;
+            line-height: 1.08349;
             font-weight: 600;
+            letter-spacing: -.003em;
+            max-width: 800px;
+            margin: 0 auto 24px;
         }
 
-        .insight h2 {
-            font-size: 36px;
-            font-weight: 500;
-            line-height: 1.5;
-            margin-bottom: 32px;
+        .promise-body {
+            font-size: 21px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 64px;
+            line-height: 1.4811;
         }
 
-        .insight p {
-            font-size: 18px;
-            color: var(--text-light);
-            line-height: 2;
-        }
-
-        .insight .highlight {
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        /* Pain Quote */
-        .pain-quote {
-            background: #FFF5F5;
-            border-left: 4px solid #E53E3E;
-            padding: 32px 40px;
-            margin: 40px 0;
-            font-size: 20px;
-            font-style: italic;
-            color: #C53030;
-            border-radius: 0 12px 12px 0;
-        }
-
-        /* Contrast */
-        .contrast {
+        .promise-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            margin-top: 48px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .contrast-col h3 {
-            font-size: 14px;
+        .promise-item {
+            padding: 24px 16px;
+        }
+
+        .promise-item .icon {
+            width: 48px;
+            height: 48px;
+            background: #f5f5f7;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 24px;
+        }
+
+        .promise-item h4 {
+            font-size: 17px;
             font-weight: 600;
-            color: var(--text-muted);
-            letter-spacing: 0.1em;
-            margin-bottom: 20px;
+            margin-bottom: 4px;
         }
 
-        .contrast-col ul {
-            list-style: none;
-        }
-
-        .contrast-col ul li {
-            padding: 14px 0;
-            font-size: 16px;
-            color: var(--text-light);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .contrast-col.wrong ul li {
-            text-decoration: line-through;
-            opacity: 0.4;
+        .promise-item p {
+            font-size: 14px;
+            color: var(--text-tertiary);
         }
 
         /* ============================================
            PRICING
            ============================================ */
         .pricing {
-            text-align: center;
             padding: 120px 24px;
-            background: linear-gradient(180deg, var(--bg) 0%, var(--amber-light) 100%);
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg) 0%, #fff 100%);
         }
 
-        .pricing .label {
+        .pricing-eyebrow {
             font-size: 12px;
-            color: var(--amber);
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            margin-bottom: 32px;
             font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--amber);
+            margin-bottom: 16px;
         }
 
-        .pricing h2 {
-            font-size: 36px;
-            font-weight: 500;
+        .pricing-headline {
+            font-size: 48px;
+            line-height: 1.08349;
+            font-weight: 600;
+            letter-spacing: -.003em;
+            margin-bottom: 16px;
+        }
+
+        .pricing-subhead {
+            font-size: 21px;
+            color: var(--text-secondary);
             margin-bottom: 64px;
         }
 
         .pricing-cards {
             display: flex;
             justify-content: center;
-            gap: 32px;
+            gap: 24px;
             flex-wrap: wrap;
             margin-bottom: 48px;
         }
 
         .pricing-card {
             background: white;
-            border: 2px solid var(--border);
-            border-radius: 24px;
-            padding: 48px 40px;
-            min-width: 280px;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px 32px;
+            min-width: 260px;
+            text-align: left;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
         }
 
         .pricing-card.featured {
@@ -389,143 +423,101 @@
         .pricing-card.featured::before {
             content: "推荐";
             position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: -10px;
+            right: 20px;
             background: var(--amber);
             color: white;
-            padding: 4px 16px;
-            border-radius: 12px;
-            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 11px;
             font-weight: 600;
         }
 
         .pricing-card .tier {
-            font-size: 14px;
-            color: var(--text-muted);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-
-        .pricing-card .price {
-            font-size: 48px;
+            font-size: 12px;
             font-weight: 600;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
             margin-bottom: 8px;
         }
 
+        .pricing-card .price {
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
         .pricing-card .period {
-            font-size: 16px;
-            color: var(--text-light);
+            font-size: 14px;
+            color: var(--text-tertiary);
             margin-bottom: 24px;
         }
 
         .pricing-card .features {
             font-size: 14px;
-            color: var(--text-light);
-            line-height: 2;
+            color: var(--text-secondary);
+            line-height: 1.8;
         }
 
-        .pricing-insight {
-            font-size: 16px;
-            color: var(--text-muted);
-            max-width: 480px;
-            margin: 0 auto;
-            line-height: 2;
-        }
-
-        /* ============================================
-           TRUST / PRIVACY
-           ============================================ */
-        .trust-section {
-            text-align: center;
-            padding: 100px 24px;
-            background: white;
-        }
-
-        .trust-section h2 {
-            font-size: 32px;
-            font-weight: 500;
-            margin-bottom: 48px;
-        }
-
-        .trust-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .trust-item {
-            padding: 24px;
-        }
-
-        .trust-item .icon {
-            font-size: 40px;
-            margin-bottom: 16px;
-        }
-
-        .trust-item h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .trust-item p {
+        .pricing-note {
             font-size: 14px;
-            color: var(--text-light);
+            color: var(--text-tertiary);
+            max-width: 400px;
+            margin: 0 auto;
         }
 
         /* ============================================
-           CTA
+           CTA SECTION
            ============================================ */
         .cta-section {
+            padding: 160px 24px;
             text-align: center;
-            padding: 120px 24px;
             background: var(--text);
             color: white;
         }
 
-        .cta-section h2 {
-            font-size: 42px;
+        .cta-headline {
+            font-size: 64px;
+            line-height: 1.0625;
             font-weight: 600;
-            margin-bottom: 16px;
+            letter-spacing: -.009em;
+            margin-bottom: 24px;
         }
 
-        .cta-section .subtitle {
-            font-size: 20px;
+        .cta-subhead {
+            font-size: 21px;
             color: rgba(255,255,255,0.7);
             margin-bottom: 48px;
         }
 
-        .cta {
+        .cta-button {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             background: white;
             color: var(--text);
-            padding: 20px 48px;
+            padding: 18px 40px;
+            border-radius: 980px;
             text-decoration: none;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 16px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 17px;
+            font-weight: 400;
+            transition: all 0.3s;
         }
 
-        .cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        .cta-button:hover {
+            background: #f5f5f7;
+            transform: scale(1.02);
         }
 
-        .cta svg {
-            width: 24px;
-            height: 24px;
+        .cta-button svg {
+            width: 20px;
+            height: 20px;
         }
 
         .cta-note {
-            margin-top: 24px;
-            font-size: 14px;
+            margin-top: 16px;
+            font-size: 12px;
             color: rgba(255,255,255,0.5);
         }
 
@@ -533,28 +525,37 @@
            FOOTER
            ============================================ */
         footer {
-            text-align: center;
-            padding: 64px 24px;
+            padding: 24px;
             background: var(--text);
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        footer nav {
-            margin-bottom: 24px;
+        .footer-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
-        footer a {
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
             color: rgba(255,255,255,0.6);
             text-decoration: none;
-            margin: 0 16px;
-            font-size: 14px;
+            font-size: 12px;
         }
 
-        footer a:hover {
+        .footer-links a:hover {
             color: white;
         }
 
-        footer .copyright {
+        .footer-copyright {
             font-size: 12px;
             color: rgba(255,255,255,0.4);
         }
@@ -567,194 +568,162 @@
                 grid-template-columns: 1fr;
                 gap: 64px;
             }
-            .trust-grid {
+            .promise-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 600px) {
-            .hero h1 { font-size: 48px; }
-            .hero .tagline { font-size: 22px; }
-            .hero-icon { width: 120px; height: 120px; border-radius: 28px; }
-            .flow-demo { flex-direction: column; gap: 16px; }
-            .flow-arrow { transform: rotate(90deg); }
-            .showcase-title h2 { font-size: 32px; }
-            .screenshot-item img { height: 420px; }
-            .insight h2 { font-size: 28px; }
-            .contrast { grid-template-columns: 1fr; gap: 32px; }
-            .pricing h2 { font-size: 28px; }
+            .hero h1 { font-size: 40px; }
+            .hero-headline { font-size: 21px; }
+            .hero-icon { width: 96px; height: 96px; border-radius: 22px; }
+            .copy-headline { font-size: 32px; }
+            .narrative-header h2 { font-size: 32px; }
+            .promise-headline { font-size: 32px; }
+            .promise-grid { grid-template-columns: 1fr; }
+            .pricing-headline { font-size: 32px; }
             .pricing-card { min-width: 100%; }
-            .trust-grid { grid-template-columns: 1fr; }
-            .cta-section h2 { font-size: 32px; }
+            .cta-headline { font-size: 40px; }
+            .film-item img { height: 400px; }
+            .footer-inner { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
     <div class="lang-switch">
-        <a href="index-en.html">EN</a>
+        <a href="index-en.html">English</a>
     </div>
 
     <!-- ============================================
          HERO
          ============================================ -->
     <section class="hero">
-        <img src="assets/app-icon.png" alt="MARGIN App Icon" class="hero-icon">
+        <img src="assets/app-icon.png" alt="MARGIN" class="hero-icon">
+        <p class="hero-eyebrow">日程收集箱</p>
         <h1>MARGIN</h1>
-        <p class="tagline">
-            日程收集箱<br>
-            <strong>随手一扔，就进日历</strong>
+        <p class="hero-headline">
+            随手扔进去，它帮你变成日历。
         </p>
-        <div class="flow-demo">
-            <div class="flow-step">
-                <div class="icon">📸</div>
-                <div class="label">截图</div>
-            </div>
-            <span class="flow-arrow">→</span>
-            <div class="flow-step">
-                <div class="icon">🤖</div>
-                <div class="label">识别</div>
-            </div>
-            <span class="flow-arrow">→</span>
-            <div class="flow-step">
-                <div class="icon">✓</div>
-                <div class="label">确认</div>
-            </div>
-            <span class="flow-arrow">→</span>
-            <div class="flow-step">
-                <div class="icon">📅</div>
-                <div class="label">进日历</div>
-            </div>
-        </div>
-        <p class="flow-time">整个过程 < 10 秒</p>
+        <a href="https://apps.apple.com/app/margin/id000000000" class="hero-cta">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            App Store 下载
+        </a>
+        <p class="hero-note">需要 iOS 17.0 或更高版本</p>
     </section>
 
     <!-- ============================================
-         PRODUCT SHOWCASE
+         PRODUCT FILM
          ============================================ -->
-    <section class="showcase full-width">
-        <div class="showcase-title">
-            <p class="label">产品预览</p>
-            <h2>看看它长什么样</h2>
-        </div>
-        <div class="screenshot-scroll">
-            <div class="screenshot-item">
-                <img src="assets/01-screenshot-to-calendar.png" alt="截图转日历">
-                <p class="caption">分享截图</p>
+    <section class="product-film">
+        <div class="film-scroll">
+            <div class="film-item">
+                <img src="assets/01-screenshot-to-calendar.png" alt="分享截图">
             </div>
-            <div class="screenshot-item">
-                <img src="assets/02-we-read-it.png" alt="AI 识别">
-                <p class="caption">AI 识别</p>
+            <div class="film-item">
+                <img src="assets/02-we-read-it.png" alt="识别内容">
             </div>
-            <div class="screenshot-item">
+            <div class="film-item">
                 <img src="assets/03-one-tap-add.png" alt="一键添加">
-                <p class="caption">一键添加</p>
             </div>
-            <div class="screenshot-item">
-                <img src="assets/04-in-calendar.png" alt="已进日历">
-                <p class="caption">已进日历</p>
+            <div class="film-item">
+                <img src="assets/04-in-calendar.png" alt="进入日历">
             </div>
-            <div class="screenshot-item">
-                <img src="assets/05-schedule-inbox.png" alt="日程收集箱">
-                <p class="caption">收集箱</p>
+            <div class="film-item">
+                <img src="assets/05-schedule-inbox.png" alt="收集箱">
             </div>
         </div>
     </section>
 
     <!-- ============================================
-         NARRATIVE - The Story
+         THE PAIN
          ============================================ -->
-    <section class="narrative">
-        <div class="narrative-grid">
-            <div class="narrative-step">
-                <div class="number">1</div>
-                <img src="assets/01-scattered.png" alt="混乱的日程">
-                <h3>日程散落各处</h3>
-                <p>微信截图、邮件通知、朋友圈活动…<br>你知道它们在，但不知道去哪找。</p>
-            </div>
-            <div class="narrative-step">
-                <div class="number">2</div>
-                <img src="assets/02-toss-in.png" alt="随手扔进去">
-                <h3>随手扔进去</h3>
-                <p>看到就分享，不用停下来整理。<br>截图、转发、粘贴，扔进 MARGIN。</p>
-            </div>
-            <div class="narrative-step">
-                <div class="number">3</div>
-                <img src="assets/03-organized.png" alt="井井有条">
-                <h3>井井有条</h3>
-                <p>确认一下，就进日历。<br>再也不会「又忘了」。</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================
-         PAIN POINT
-         ============================================ -->
-    <section class="insight">
-        <p class="label">问题</p>
-        <h2>你骂自己的瞬间</h2>
+    <section class="copy-section">
+        <p class="copy-eyebrow">问题</p>
+        <h2 class="copy-headline">你骂自己的瞬间</h2>
         <div class="pain-quote">
             "操，婚礼是明天，我忘了！"<br>
             "孩子的家长会我又没去！"<br>
-            "这个会议我明明看到通知了，怎么没录进去！"
+            "这个会议我明明看到通知了…"
         </div>
-        <p>
+        <p class="copy-body">
             问题不是「录入麻烦」。<br>
-            问题是「<span class="highlight">当时没录，后来忘了</span>」。
+            问题是「<strong>当时没录，后来忘了</strong>」。
         </p>
     </section>
 
     <!-- ============================================
-         SOLUTION
+         NARRATIVE
          ============================================ -->
-    <section class="insight">
-        <p class="label">解法</p>
-        <h2>让「当时没录」<br>这件事不再发生</h2>
-        <p>
-            收到课表、婚礼邀请、会议截图？<br>
-            不用停下来整理。<br>
-            <span class="highlight">截图、转发、粘贴</span>，扔进 MARGIN。<br>
-            它帮你识别、你确认一下、就进系统日历。
-        </p>
-    </section>
-
-    <!-- ============================================
-         TRUST PROMISE
-         ============================================ -->
-    <section class="insight">
-        <p class="label">承诺</p>
-        <h2>永远不替你做决定</h2>
-        <p>
-            日历是「强后果系统」。<br>
-            一次自动误判 = 信任清零。<br><br>
-            所以 MARGIN <span class="highlight">永远不自动写入日历</span>。<br>
-            每一条日程，都需要你确认。
-        </p>
-    </section>
-
-    <!-- ============================================
-         BOUNDARIES
-         ============================================ -->
-    <section class="insight">
-        <p class="label">边界</p>
-        <h2>省心，不是兴奋</h2>
-        <div class="contrast">
-            <div class="contrast-col wrong">
-                <h3>MARGIN 不是</h3>
-                <ul>
-                    <li>日历应用</li>
-                    <li>Todo 工具</li>
-                    <li>AI 聊天助手</li>
-                    <li>提醒轰炸机</li>
-                </ul>
+    <section class="narrative">
+        <div class="narrative-header">
+            <h2>三步，不再忘</h2>
+            <p>截图、确认、进日历。整个过程不到 10 秒。</p>
+        </div>
+        <div class="narrative-grid">
+            <div class="narrative-step">
+                <img src="assets/01-scattered.png" alt="散落的日程">
+                <h3>日程散落各处</h3>
+                <p>微信截图、邮件通知、朋友圈…<br>你知道它们在，但没进日历。</p>
             </div>
-            <div class="contrast-col">
-                <h3>MARGIN 是</h3>
-                <ul>
-                    <li>日程收集箱</li>
-                    <li>截图识别器</li>
-                    <li>日历入口</li>
-                    <li>省心工具</li>
-                </ul>
+            <div class="narrative-step">
+                <img src="assets/02-toss-in.png" alt="扔进去">
+                <h3>随手扔进去</h3>
+                <p>看到就分享给 MARGIN。<br>不用停下来整理。</p>
+            </div>
+            <div class="narrative-step">
+                <img src="assets/03-organized.png" alt="井井有条">
+                <h3>井井有条</h3>
+                <p>确认一下，就进系统日历。<br>再也不会「又忘了」。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         THE SOLUTION
+         ============================================ -->
+    <section class="copy-section dark">
+        <div class="copy-inner">
+            <p class="copy-eyebrow">解法</p>
+            <h2 class="copy-headline">让「当时没录」<br>不再发生</h2>
+            <p class="copy-body">
+                收到课表、婚礼邀请、会议截图？<br>
+                <strong>截图、转发、粘贴</strong>，扔进 MARGIN。<br>
+                它帮你识别。你确认一下。就进系统日历。
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PROMISE
+         ============================================ -->
+    <section class="promise">
+        <h2 class="promise-headline">永远不替你做决定</h2>
+        <p class="promise-body">
+            日历是「强后果系统」——一次自动误判，信任清零。<br>
+            所以 MARGIN <strong>永远不自动写入日历</strong>，每一条都需要你确认。
+        </p>
+        <div class="promise-grid">
+            <div class="promise-item">
+                <div class="icon">📱</div>
+                <h4>本地存储</h4>
+                <p>数据留在你的设备</p>
+            </div>
+            <div class="promise-item">
+                <div class="icon">🚫</div>
+                <h4>不追踪</h4>
+                <p>无分析 SDK</p>
+            </div>
+            <div class="promise-item">
+                <div class="icon">🗑️</div>
+                <h4>即时删除</h4>
+                <p>图片识别后立即删除</p>
+            </div>
+            <div class="promise-item">
+                <div class="icon">🔒</div>
+                <h4>安全传输</h4>
+                <p>TLS 1.3 加密</p>
             </div>
         </div>
     </section>
@@ -763,12 +732,13 @@
          PRICING
          ============================================ -->
     <section class="pricing">
-        <p class="label">定价</p>
-        <h2>每天在工作的服务，不是玩具</h2>
+        <p class="pricing-eyebrow">定价</p>
+        <h2 class="pricing-headline">认真的服务，认真收费</h2>
+        <p class="pricing-subhead">这是每天为你工作的助理，不是玩具。</p>
         <div class="pricing-cards">
             <div class="pricing-card">
                 <p class="tier">Standard</p>
-                <div class="price">$7.99</div>
+                <div class="price">¥58</div>
                 <p class="period">每年</p>
                 <p class="features">
                     截图识别<br>
@@ -778,58 +748,27 @@
             </div>
             <div class="pricing-card featured">
                 <p class="tier">Pro</p>
-                <div class="price">$17.99</div>
+                <div class="price">¥128</div>
                 <p class="period">每年</p>
                 <p class="features">
                     包含 Standard 全部功能<br>
                     语音简报<br>
-                    周月分析
+                    周月分析报告
                 </p>
             </div>
         </div>
-        <p class="pricing-insight">
-            认真收钱，认真交付。<br>
-            这是每天都在为你工作的服务。
+        <p class="pricing-note">
+            新用户可免费体验 3 次识别
         </p>
-    </section>
-
-    <!-- ============================================
-         TRUST / PRIVACY
-         ============================================ -->
-    <section class="trust-section">
-        <h2>关于隐私</h2>
-        <div class="trust-grid">
-            <div class="trust-item">
-                <div class="icon">📱</div>
-                <h3>本地存储</h3>
-                <p>数据留在你的设备</p>
-            </div>
-            <div class="trust-item">
-                <div class="icon">🚫</div>
-                <h3>不追踪</h3>
-                <p>无分析 SDK</p>
-            </div>
-            <div class="trust-item">
-                <div class="icon">🗑️</div>
-                <h3>即时删除</h3>
-                <p>图片识别后立即删除</p>
-            </div>
-            <div class="trust-item">
-                <div class="icon">🔒</div>
-                <h3>安全传输</h3>
-                <p>TLS 1.3 加密</p>
-            </div>
-        </div>
     </section>
 
     <!-- ============================================
          CTA
          ============================================ -->
     <section class="cta-section">
-        <h2>不再「又忘了」</h2>
-        <p class="subtitle">从今天开始，日程随手扔</p>
-        <!-- TODO: Replace with real App Store link after approval -->
-        <a href="https://apps.apple.com/app/margin/id000000000" class="cta">
+        <h2 class="cta-headline">不再「又忘了」</h2>
+        <p class="cta-subhead">从今天开始，日程随手扔</p>
+        <a href="https://apps.apple.com/app/margin/id000000000" class="cta-button">
             <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
             </svg>
@@ -842,12 +781,14 @@
          FOOTER
          ============================================ -->
     <footer>
-        <nav>
-            <a href="support.html">支持</a>
-            <a href="privacy.html">隐私政策</a>
-            <a href="terms.html">服务条款</a>
-        </nav>
-        <p class="copyright">© 2026 Uncle J</p>
+        <div class="footer-inner">
+            <div class="footer-links">
+                <a href="support.html">支持</a>
+                <a href="privacy.html">隐私政策</a>
+                <a href="terms.html">服务条款</a>
+            </div>
+            <p class="footer-copyright">© 2026 Uncle J</p>
+        </div>
     </footer>
 </body>
 </html>
