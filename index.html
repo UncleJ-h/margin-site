@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MARGIN - 日程收集箱</title>
-    <meta name="description" content="随手扔进去，它帮你变成日历。让「当时没录，后来忘了」这件事不再发生。">
-    <meta name="keywords" content="MARGIN, 日程收集箱, 日历, iOS App, 截图识别">
-    <link rel="alternate" hreflang="en" href="index-en.html">
+    <title>MARGIN - Calendar Inbox</title>
+    <meta name="description" content="Toss messy time info in. Confirm once. It's in your calendar. Stop forgetting what you saw.">
+    <meta name="keywords" content="MARGIN, calendar inbox, iOS App, screenshot to calendar, event recognition">
+    <link rel="alternate" hreflang="zh-CN" href="index-zh.html">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -140,6 +140,7 @@
 
         .film-scroll {
             display: flex;
+            justify-content: center;
             gap: 24px;
             padding: 80px 48px;
             overflow-x: auto;
@@ -153,6 +154,7 @@
         .film-item {
             flex: 0 0 auto;
             scroll-snap-align: center;
+            text-align: center;
         }
 
         .film-item img {
@@ -160,6 +162,13 @@
             width: auto;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .film-item .caption {
+            margin-top: 16px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
         }
 
         /* ============================================
@@ -421,7 +430,7 @@
         }
 
         .pricing-card.featured::before {
-            content: "推荐";
+            content: "Best Value";
             position: absolute;
             top: -10px;
             right: 20px;
@@ -591,7 +600,7 @@
 </head>
 <body>
     <div class="lang-switch">
-        <a href="index-en.html">English</a>
+        <a href="index-zh.html">中文</a>
     </div>
 
     <!-- ============================================
@@ -599,18 +608,18 @@
          ============================================ -->
     <section class="hero">
         <img src="assets/app-icon.png" alt="MARGIN" class="hero-icon">
-        <p class="hero-eyebrow">日程收集箱</p>
+        <p class="hero-eyebrow">Calendar Inbox</p>
         <h1>MARGIN</h1>
         <p class="hero-headline">
-            随手扔进去，它帮你变成日历。
+            Toss it in. Confirm once. It's in your calendar.
         </p>
         <a href="https://apps.apple.com/app/margin/id000000000" class="hero-cta">
             <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
             </svg>
-            App Store 下载
+            Download on App Store
         </a>
-        <p class="hero-note">需要 iOS 17.0 或更高版本</p>
+        <p class="hero-note">Requires iOS 17.0 or later</p>
     </section>
 
     <!-- ============================================
@@ -619,19 +628,19 @@
     <section class="product-film">
         <div class="film-scroll">
             <div class="film-item">
-                <img src="assets/01-screenshot-to-calendar.png" alt="分享截图">
+                <img src="assets/01-screenshot-to-calendar.png" alt="Share screenshot">
             </div>
             <div class="film-item">
-                <img src="assets/02-we-read-it.png" alt="识别内容">
+                <img src="assets/02-we-read-it.png" alt="We read it">
             </div>
             <div class="film-item">
-                <img src="assets/03-one-tap-add.png" alt="一键添加">
+                <img src="assets/03-one-tap-add.png" alt="One tap add">
             </div>
             <div class="film-item">
-                <img src="assets/04-in-calendar.png" alt="进入日历">
+                <img src="assets/04-in-calendar.png" alt="In calendar">
             </div>
             <div class="film-item">
-                <img src="assets/05-schedule-inbox.png" alt="收集箱">
+                <img src="assets/05-schedule-inbox.png" alt="Schedule inbox">
             </div>
         </div>
     </section>
@@ -640,16 +649,16 @@
          THE PAIN
          ============================================ -->
     <section class="copy-section">
-        <p class="copy-eyebrow">问题</p>
-        <h2 class="copy-headline">你骂自己的瞬间</h2>
+        <p class="copy-eyebrow">The Problem</p>
+        <h2 class="copy-headline">The moment you blame yourself</h2>
         <div class="pain-quote">
-            "操，婚礼是明天，我忘了！"<br>
-            "孩子的家长会我又没去！"<br>
-            "这个会议我明明看到通知了…"
+            "The wedding is tomorrow, and I forgot!"<br>
+            "I missed my kid's parent-teacher meeting again!"<br>
+            "I clearly saw that meeting notice…"
         </div>
         <p class="copy-body">
-            问题不是「录入麻烦」。<br>
-            问题是「<strong>当时没录，后来忘了</strong>」。
+            The problem isn't "adding events is annoying."<br>
+            The problem is "<strong>I saw it, didn't add it, then forgot.</strong>"
         </p>
     </section>
 
@@ -658,24 +667,24 @@
          ============================================ -->
     <section class="narrative">
         <div class="narrative-header">
-            <h2>三步，不再忘</h2>
-            <p>截图、确认、进日历。整个过程不到 10 秒。</p>
+            <h2>Three steps. Never forget.</h2>
+            <p>Screenshot, confirm, done. Under 10 seconds.</p>
         </div>
         <div class="narrative-grid">
             <div class="narrative-step">
-                <img src="assets/01-scattered.png" alt="散落的日程">
-                <h3>日程散落各处</h3>
-                <p>微信截图、邮件通知、朋友圈…<br>你知道它们在，但没进日历。</p>
+                <img src="assets/01-scattered.png" alt="Scattered schedules">
+                <h3>Schedules everywhere</h3>
+                <p>Screenshots, emails, messages…<br>You know they exist. Not in your calendar.</p>
             </div>
             <div class="narrative-step">
-                <img src="assets/02-toss-in.png" alt="扔进去">
-                <h3>随手扔进去</h3>
-                <p>看到就分享给 MARGIN。<br>不用停下来整理。</p>
+                <img src="assets/02-toss-in.png" alt="Toss it in">
+                <h3>Toss it in</h3>
+                <p>See it, share it to MARGIN.<br>No need to stop and organize.</p>
             </div>
             <div class="narrative-step">
-                <img src="assets/03-organized.png" alt="井井有条">
-                <h3>井井有条</h3>
-                <p>确认一下，就进系统日历。<br>再也不会「又忘了」。</p>
+                <img src="assets/03-organized.png" alt="All organized">
+                <h3>All organized</h3>
+                <p>Confirm once, it's in your calendar.<br>Never "forgot again."</p>
             </div>
         </div>
     </section>
@@ -685,12 +694,12 @@
          ============================================ -->
     <section class="copy-section dark">
         <div class="copy-inner">
-            <p class="copy-eyebrow">解法</p>
-            <h2 class="copy-headline">让「当时没录」<br>不再发生</h2>
+            <p class="copy-eyebrow">The Solution</p>
+            <h2 class="copy-headline">Prevent "I saw it<br>but forgot it"</h2>
             <p class="copy-body">
-                收到课表、婚礼邀请、会议截图？<br>
-                <strong>截图、转发、粘贴</strong>，扔进 MARGIN。<br>
-                它帮你识别。你确认一下。就进系统日历。
+                Got a class schedule, wedding invite, meeting screenshot?<br>
+                <strong>Screenshot, forward, paste</strong> — toss it to MARGIN.<br>
+                We extract. You confirm. It's in your system calendar.
             </p>
         </div>
     </section>
@@ -699,31 +708,31 @@
          PROMISE
          ============================================ -->
     <section class="promise">
-        <h2 class="promise-headline">永远不替你做决定</h2>
+        <h2 class="promise-headline">We never decide for you</h2>
         <p class="promise-body">
-            日历是「强后果系统」——一次自动误判，信任清零。<br>
-            所以 MARGIN <strong>永远不自动写入日历</strong>，每一条都需要你确认。
+            Calendars are high-stakes — one wrong auto-add destroys trust.<br>
+            So MARGIN <strong>never writes to your calendar automatically</strong>. Every event needs your confirmation.
         </p>
         <div class="promise-grid">
             <div class="promise-item">
                 <div class="icon">📱</div>
-                <h4>本地存储</h4>
-                <p>数据留在你的设备</p>
+                <h4>Local Storage</h4>
+                <p>Data stays on your device</p>
             </div>
             <div class="promise-item">
                 <div class="icon">🚫</div>
-                <h4>不追踪</h4>
-                <p>无分析 SDK</p>
+                <h4>No Tracking</h4>
+                <p>No analytics SDK</p>
             </div>
             <div class="promise-item">
                 <div class="icon">🗑️</div>
-                <h4>即时删除</h4>
-                <p>图片识别后立即删除</p>
+                <h4>Instant Delete</h4>
+                <p>Images deleted after processing</p>
             </div>
             <div class="promise-item">
                 <div class="icon">🔒</div>
-                <h4>安全传输</h4>
-                <p>TLS 1.3 加密</p>
+                <h4>Secure Transit</h4>
+                <p>TLS 1.3 encryption</p>
             </div>
         </div>
     </section>
@@ -732,33 +741,33 @@
          PRICING
          ============================================ -->
     <section class="pricing">
-        <p class="pricing-eyebrow">定价</p>
-        <h2 class="pricing-headline">认真的服务，认真收费</h2>
-        <p class="pricing-subhead">这是每天为你工作的助理，不是玩具。</p>
+        <p class="pricing-eyebrow">Pricing</p>
+        <h2 class="pricing-headline">A real service. Real pricing.</h2>
+        <p class="pricing-subhead">This is an assistant that works for you daily, not a toy.</p>
         <div class="pricing-cards">
             <div class="pricing-card">
                 <p class="tier">Standard</p>
-                <div class="price">¥58</div>
-                <p class="period">每年</p>
+                <div class="price">$7.99</div>
+                <p class="period">per year</p>
                 <p class="features">
-                    截图识别<br>
-                    每日简报<br>
-                    无限使用
+                    Screenshot recognition<br>
+                    Daily briefing<br>
+                    Unlimited use
                 </p>
             </div>
             <div class="pricing-card featured">
                 <p class="tier">Pro</p>
-                <div class="price">¥128</div>
-                <p class="period">每年</p>
+                <div class="price">$17.99</div>
+                <p class="period">per year</p>
                 <p class="features">
-                    包含 Standard 全部功能<br>
-                    语音简报<br>
-                    周月分析报告
+                    Everything in Standard<br>
+                    Voice briefing<br>
+                    Weekly & monthly reports
                 </p>
             </div>
         </div>
         <p class="pricing-note">
-            新用户可免费体验 3 次识别
+            New users get 3 free recognition trials
         </p>
     </section>
 
@@ -766,15 +775,15 @@
          CTA
          ============================================ -->
     <section class="cta-section">
-        <h2 class="cta-headline">不再「又忘了」</h2>
-        <p class="cta-subhead">从今天开始，日程随手扔</p>
+        <h2 class="cta-headline">Stop forgetting</h2>
+        <p class="cta-subhead">Start tossing your schedules in today</p>
         <a href="https://apps.apple.com/app/margin/id000000000" class="cta-button">
             <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
             </svg>
-            App Store 下载
+            Download on App Store
         </a>
-        <p class="cta-note">需要 iOS 17.0 或更高版本</p>
+        <p class="cta-note">Requires iOS 17.0 or later</p>
     </section>
 
     <!-- ============================================
@@ -783,9 +792,9 @@
     <footer>
         <div class="footer-inner">
             <div class="footer-links">
-                <a href="support.html">支持</a>
-                <a href="privacy.html">隐私政策</a>
-                <a href="terms.html">服务条款</a>
+                <a href="support-en.html">Support</a>
+                <a href="privacy-en.html">Privacy Policy</a>
+                <a href="terms-en.html">Terms of Service</a>
             </div>
             <p class="footer-copyright">© 2026 Uncle J</p>
         </div>
