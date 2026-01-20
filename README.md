@@ -39,9 +39,9 @@ margin-site/
 
 ## 联系
 
-- 支持邮箱：support@margin.app
-- 隐私邮箱：privacy@margin.app
-- 条款邮箱：terms@margin.app
+- 支持邮箱：margin@theunclej.com
+- 隐私邮箱：margin@theunclej.com
+- 条款邮箱：margin@theunclej.com
 
 ---
 
